@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "param.wa.url",
+    "type": "java.lang.String",
+    "description": "A description for 'param.wa.url'"
+  },
+  {
+    "name": "param.wa.partner.id",
+    "type": "java.lang.String",
+    "description": "A description for 'param.wa.partner.id'"
+  },
+  {
+    "name": "param.wa.project.type",
+    "type": "java.lang.String",
+    "description": "A description for 'param.wa.project.type'"
+  },
+  {
+    "name": "param.action.validate",
+    "type": "java.lang.String",
+    "description": "A description for 'param.action.validate'"
+  },
+  {
+    "name": "param.action.generate",
+    "type": "java.lang.String",
+    "description": "A description for 'param.action.generate'"
+  }
+]}
