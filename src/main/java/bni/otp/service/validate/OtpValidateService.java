@@ -46,7 +46,7 @@ public class OtpValidateService {
 //        validate otp
         LocalDateTime intervalValidate = LocalDateTime.now().minusMinutes(commonConfig.getIntervalValidateOtp());
         boolean isUsed = otpRepository.selectIsUsed(nik);
-        String otpValue = otpRepository.selectOtpCode(nik, intervalValidate);
+        String otpValue = otpRepository.selectOtpCode(nik, key, intervalValidate);
         if(otpValue == null) {
             attemptFail += 1;
             otpRepository.updateAttemptFailOtp(attemptFail, nik);

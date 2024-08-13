@@ -21,8 +21,8 @@ public interface OtpRepository extends JpaRepository<Otp, Integer> {
     @Query(value = "select 1 from otp_list where nik = ?1", nativeQuery = true)
     Integer selectNikExist(String nik);
 
-    @Query(value = "select otp_code from otp_list where nik = ?1 and modified_at >= ?2", nativeQuery = true)
-    String selectOtpCode(String nik, LocalDateTime interval);
+    @Query(value = "select otp_code from otp_list where nik = ?1 and key = ?2 and modified_at >= ?3", nativeQuery = true)
+    String selectOtpCode(String nik, String key, LocalDateTime interval);
 
     @Query(value = "select is_used from otp_list where nik = ?1", nativeQuery = true)
     boolean selectIsUsed(String nik);
@@ -39,8 +39,9 @@ public interface OtpRepository extends JpaRepository<Otp, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "update otp_list set key = ?1, otp_code = ?2, attempt_generate = ?3, modified_at = current_timestamp where nik = ?4", nativeQuery = true)
+    @Query(value = "update otp_list set key = ?1, otp_code = ?2, attempt_generate = ?3, modified_at = current_timestamp, is_used = FALSE where nik = ?4", nativeQuery = true)
     void updateAttemptReqOtp(String key, String otpCode, int attemptReq, String nik);
+
     @Modifying
     @Transactional
     @Query(value = "update otp_list set attempt_fail = ?1, modified_at = current_timestamp where nik = ?2", nativeQuery = true)
