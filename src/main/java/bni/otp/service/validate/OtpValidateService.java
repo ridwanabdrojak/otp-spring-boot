@@ -32,9 +32,6 @@ public class OtpValidateService {
         String key = req.getKey();
         String otp = req.getOtpValue();
         String action = commonConfig.getValidateString();
-//        set logsId to response
-        OtpValidateRes responseMap = new OtpValidateRes();
-        responseMap.setLogsId(logsId);
 //        prepared to request string
         Gson gson = new Gson();
         String reqString = gson.toJson(req);
@@ -70,6 +67,8 @@ public class OtpValidateService {
         }
         otpRepository.updateOtpIsUsed(nik);
 //        response mapping
+        OtpValidateRes responseMap = new OtpValidateRes();
+        responseMap.setLogsId(logsId);
         responseMap.setNik(nik);
         responseMap.setKey(key);
         responseMap.setAttemptFail(String.valueOf(attemptFail));

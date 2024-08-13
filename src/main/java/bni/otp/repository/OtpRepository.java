@@ -34,7 +34,7 @@ public interface OtpRepository extends JpaRepository<Otp, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "update otp_list set key = ?1, otp_code = ?2, attempt_generate = ?3, attempt_fail = 0, modified_at = current_timestamp, is_Used = FALSE where nik = ?4", nativeQuery = true)
+    @Query(value = "update otp_list set key = ?1, otp_code = ?2, attempt_generate = ?3, attempt_fail = 0, modified_at = current_timestamp, is_used = FALSE where nik = ?4", nativeQuery = true)
     void resetOtp(String key, String otpCode, int attemptReq, String nik);
 
     @Modifying
